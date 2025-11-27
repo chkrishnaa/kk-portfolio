@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { FiGithub } from 'react-icons/fi';
+import { buildPreviewUrl } from "../ui/link-preview";
 
-const ProjectCard = ({project, index, isDarkMode}) => {
-    const cardVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: (index) => ({
-          y: 0,
-          opacity: 1,
-          transition: {
-            delay: index * 0.2,
-            duration: 0.6,
-            ease: "easeOut",
-          },
-        }),
-    }
+const ProjectCard = ({ project, index, isDarkMode }) => {
+  const [hasError, setHasError] = useState(false);
+  const previewSrc = hasError
+    ? project.image
+    : buildPreviewUrl(project.liveUrl);
+
+  const cardVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: (index) => ({
+      y: 0,
+      opacity: 1,
+      transition: {
+        delay: index * 0.2,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
   return (
     <motion.div
       variants={cardVariants}
@@ -38,10 +44,14 @@ const ProjectCard = ({project, index, isDarkMode}) => {
       >
         <div className="relative overflow-hidden">
           <img
-            src={project.image}
+            src={previewSrc || project.image}
             alt={project.title}
-            onError={() => setImageError(true)}
-            className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+            onError={() => setHasError(true)}
+            className={`w-full h-60 object-cover object-top transition-transform duration-700 ${
+              !previewSrc
+                ? "group-hover:scale-[1.05]"
+                : "scale-[1.50] group-hover:scale-[1.55]"
+            }`}
           />
           {project.featured && (
             <div className="absolute top-4 left-4">
@@ -94,7 +104,9 @@ const ProjectCard = ({project, index, isDarkMode}) => {
         </div>
 
         <div className="p-6">
-          <h3 className="text-xl font-medium mb-3 group-hover:text-blue-500 transition-colors">{project.title}</h3>
+          <h3 className="text-xl font-medium mb-3 group-hover:text-blue-500 transition-colors">
+            {project.title}
+          </h3>
           <p
             className={`text-sm leading-relaxed mb-4 ${
               isDarkMode ? "text-gray-400" : "text-gray-600"
@@ -104,13 +116,15 @@ const ProjectCard = ({project, index, isDarkMode}) => {
           </p>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag, tagIndex) => (
-              <span key={tagIndex}
+              <span
+                key={tagIndex}
                 className={`text-xs px-3 py-1 rounded-full ${
                   isDarkMode
                     ? "bg-gray-800 text-gray-300"
                     : "bg-gray-100 text-gray-700"
                 }`}
-                >{tag}
+              >
+                {tag}
               </span>
             ))}
           </div>
@@ -118,6 +132,6 @@ const ProjectCard = ({project, index, isDarkMode}) => {
       </div>
     </motion.div>
   );
-}
+};
 
 export default ProjectCard

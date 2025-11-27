@@ -7,6 +7,7 @@ import { PROJECTS } from '../../utils/data';
 import ProjectCard from "../Cards/ProjectCard";
 import {containerVariants, itemVariants} from '../../utils/helper';
 
+
 const ProjectsSection = () => {
 
     const { isDarkMode } = useTheme();

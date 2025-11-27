@@ -18,14 +18,14 @@ import {
 
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 
-import PROJECT_IMG_1 from "../assets/KkImages/Krishnakumar.jpeg";
-import PROJECT_IMG_2 from "../assets/KkImages/Krishnakumar.jpeg";
-import PROJECT_IMG_3 from "../assets/KkImages/Krishnakumar.jpeg";
-import PROJECT_IMG_4 from "../assets/KkImages/Krishnakumar.jpeg";
-import PROJECT_IMG_5 from "../assets/KkImages/Krishnakumar.jpeg";
-import PROJECT_IMG_6 from "../assets/KkImages/Krishnakumar.jpeg";
-import PROJECT_IMG_7 from "../assets/KkImages/Krishnakumar.jpeg";
-import PROJECT_IMG_8 from "../assets/KkImages/Krishnakumar.jpeg";
+import PROJECT_IMG_1 from "../assets/ProjectImages/JobFinderThumbnail.png";
+import PROJECT_IMG_2 from "../assets/ProjectImages/JobFinderThumbnail.png";
+import PROJECT_IMG_3 from "../assets/ProjectImages/JobFinderThumbnail.png";
+import PROJECT_IMG_4 from "../assets/ProjectImages/JobFinderThumbnail.png";
+import PROJECT_IMG_5 from "../assets/ProjectImages/JobFinderThumbnail.png";
+import PROJECT_IMG_6 from "../assets/ProjectImages/JobFinderThumbnail.png";
+import PROJECT_IMG_7 from "../assets/ProjectImages/JobFinderThumbnail.png";
+import PROJECT_IMG_8 from "../assets/ProjectImages/JobFinderThumbnail.png";
 
 export const SKILLS_CATEGORY = [
   {
@@ -154,7 +154,7 @@ export const PROJECTS = [
       "A responsive dashboard displaying complex financial metrics using D3.js and custom charts. Features include time-series data visualization and interactive filtering.",
     image: PROJECT_IMG_4,
     tags: ["React", "D3.js", "Recoil", "Sass"],
-    liveUrl: "#", // Placeholder URL
+    liveUrl: "", // Placeholder URL
     githubUrl: "#", // Placeholder URL
     featured: false,
     category: "Data Viz",
@@ -231,7 +231,7 @@ export const JOURNEY_STEPS = [
 
   // Step 2: 2023 - Web Development Core
   {
-    year: "Early 2023",
+    year: "2023",
     title: "Entry into Web Development",
     company: "Self-Directed Learning",
     description:
@@ -242,7 +242,7 @@ export const JOURNEY_STEPS = [
 
   // Step 3: 2023 - Advanced Programming & Python
   {
-    year: "Mid 2023",
+    year: "2023",
     title: "Advanced Concepts & Scripting",
     company: "Deep Dive",
     description:
@@ -253,7 +253,7 @@ export const JOURNEY_STEPS = [
 
   // Step 4: 2023 - Frontend Framework Focus
   {
-    year: "Late 2023",
+    year: "2023",
     title: "Mastering Modern Frontend",
     company: "Framework Adoption",
     description:
@@ -264,7 +264,7 @@ export const JOURNEY_STEPS = [
 
   // Step 5: 2024 - Full Stack Transition (MERN Focus)
   {
-    year: "Early 2024",
+    year: "2024",
     title: "MERN Stack Back-End Initiation",
     company: "Full Stack Transition",
     description:
@@ -275,7 +275,7 @@ export const JOURNEY_STEPS = [
 
   // Step 6: 2024 - UI/UX Exploration
   {
-    year: "Mid 2024",
+    year: "2024",
     title: "Extensive UI Framework Exploration",
     company: "Design & Aesthetics",
     description:
@@ -286,7 +286,7 @@ export const JOURNEY_STEPS = [
 
   // Step 7: 2024 - Professionalization
   {
-    year: "Present",
+    year: "2025",
     title: "Full Stack Web Developer (MERN)",
     company: "Professional Developer",
     description:
