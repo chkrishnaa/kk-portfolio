@@ -320,7 +320,7 @@ export const SOCIAL_LINKS = [
     icon: FiGithub,
     url: "https://github.com/YourUsername", // Changed to a placeholder
     color: "hover:text-gray-400",
-    bgColor: "hover:bg-gray-800",
+    bgColor: "hover:bg-gray-800/80",
   },
   {
     name: "LinkedIn",

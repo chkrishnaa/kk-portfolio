@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTheme } from "../../context/ThemeContext";
 
 export const buildPreviewUrl = (url) => {
+  const { isDarkMode } = useTheme();
   if (!url || url === "#" || !url.startsWith("http")) {
     return null;
   }
@@ -12,7 +14,7 @@ export const buildPreviewUrl = (url) => {
     meta: "false",
     embed: "screenshot.url",
     waitUntil: "networkidle2",
-    colorScheme: "dark",
+    colorScheme: isDarkMode ? "dark" : "light",
   });
 
   return `https://api.microlink.io/?${params.toString()}`;

@@ -27,7 +27,7 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
       variants={cardVariants}
       whileHover={{
         y: -8,
-        scale: 1.05,
+        scale: 1.02,
         transition: {
           duration: 0.3,
           ease: "easeOut",
@@ -47,11 +47,7 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
             src={previewSrc || project.image}
             alt={project.title}
             onError={() => setHasError(true)}
-            className={`w-full h-60 object-cover object-top transition-transform duration-700 ${
-              !previewSrc
-                ? "group-hover:scale-[1.05]"
-                : "scale-[1.50] group-hover:scale-[1.55]"
-            }`}
+            className='w-full h-60 object-fit transition-transform duration-700 group-hover:scale-105'
           />
           {project.featured && (
             <div className="absolute top-4 left-4">
