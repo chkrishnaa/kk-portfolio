@@ -18,14 +18,8 @@ import {
 
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 
-import PROJECT_IMG_1 from "../assets/ProjectImages/JobFinderThumbnail.png";
-import PROJECT_IMG_2 from "../assets/ProjectImages/JobFinderThumbnail.png";
-import PROJECT_IMG_3 from "../assets/ProjectImages/JobFinderThumbnail.png";
-import PROJECT_IMG_4 from "../assets/ProjectImages/JobFinderThumbnail.png";
-import PROJECT_IMG_5 from "../assets/ProjectImages/JobFinderThumbnail.png";
-import PROJECT_IMG_6 from "../assets/ProjectImages/JobFinderThumbnail.png";
-import PROJECT_IMG_7 from "../assets/ProjectImages/JobFinderThumbnail.png";
-import PROJECT_IMG_8 from "../assets/ProjectImages/JobFinderThumbnail.png";
+// import PROJECT_IMG_1 from "../assets/ProjectImages/JobFinderThumbnail.png";
+
 
 export const SKILLS_CATEGORY = [
   {
@@ -35,7 +29,7 @@ export const SKILLS_CATEGORY = [
     skills: [
       { name: "React", level: 95, color: "bg-blue-500" },
       { name: "TypeScript", level: 90, color: "bg-blue-400" },
-      { name: "Next.js", level: 88, color: "bg-gray-800" },
+      // { name: "Next.js", level: 88, color: "bg-gray-800" },
       { name: "Tailwind CSS", level: 92, color: "bg-cyan-500" },
       { name: "Framer Motion", level: 85, color: "bg-pink-500" },
     ],
@@ -48,9 +42,9 @@ export const SKILLS_CATEGORY = [
     skills: [
       { name: "Node.js", level: 90, color: "bg-green-500" },
       { name: "Express.js", level: 88, color: "bg-gray-700" },
-      { name: "Python", level: 85, color: "bg-yellow-500" },
-      { name: "GraphQL", level: 80, color: "bg-pink-600" },
-      { name: "REST APIs", level: 92, color: "bg-orange-500" },
+      // { name: "Python", level: 85, color: "bg-yellow-500" },
+      // { name: "GraphQL", level: 80, color: "bg-pink-600" },
+      // { name: "REST APIs", level: 92, color: "bg-orange-500" },
     ],
   },
 
@@ -60,10 +54,10 @@ export const SKILLS_CATEGORY = [
     description: "Managing and optimizing data storage",
     skills: [
       { name: "MongoDB", level: 88, color: "bg-green-600" },
-      { name: "MongoDb", level: 85, color: "bg-blue-700" },
-      { name: "Redis", level: 80, color: "bg-red-500" },
-      { name: "Prisma", level: 82, color: "bg-indigo-600" },
-      { name: "Firebase", level: 78, color: "bg-yellow-600" },
+      // { name: "MongoDb", level: 85, color: "bg-blue-700" },
+      // { name: "Redis", level: 80, color: "bg-red-500" },
+      // { name: "Prisma", level: 82, color: "bg-indigo-600" },
+      // { name: "Firebase", level: 78, color: "bg-yellow-600" },
     ],
   },
 
@@ -73,10 +67,10 @@ export const SKILLS_CATEGORY = [
     description: "Deploying and scaling applications",
     skills: [
       { name: "Docker", level: 82, color: "bg-blue-600" },
-      { name: "AWS", level: 78, color: "bg-orange-600" },
+      // { name: "AWS", level: 78, color: "bg-orange-600" },
       { name: "Vercel", level: 90, color: "bg-gray-900" },
       { name: "Git", level: 95, color: "bg-orange-700" },
-      { name: "CI/CD", level: 75, color: "bg-purple-600" },
+      // { name: "CI/CD", level: 75, color: "bg-purple-600" },
     ],
   },
 ];
@@ -85,135 +79,68 @@ export const TECH_STACK = [
   "JavaScript",
   "HTML5",
   "CSS3",
-  "Sass",
-  "Webpack",
-  "Vite",
-  "Jest",
-  "Cypress",
-  "Figma",
-  "Adobe XD",
-  "Notion",
-  "Slack",
+  "Next.js",
+  "Canva",
 ];
 
 export const STATS = [
-  { number: "50+", label: "Projects Completed" },
-  { number: "3+", label: "Years Experience" },
-  { number: "20+", label: "Technologies" },
-  { number: "100%", label: "Client Satisfaction" },
+  { number: "2", label: "Projects Completed" },
+  { number: "2", label: "Years Experience" },
+  { number: "5+", label: "Technologies" },
+  { number: "80%", label: "Client Satisfaction" },
 ];
 
 export const PROJECTS = [
-  // --- Existing Project 1 (from image) ---
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description:
-      "A full-stack e-commerce solution with advanced filtering, payment integration, and real-time inventory management. Focus on performance and secure transactions.",
-    image: PROJECT_IMG_1,
-    tags: ["React", "Tailwind", "Framer motion"],
-    liveUrl: "#", // Placeholder URL
-    githubUrl: "#", // Placeholder URL
-    featured: false,
-    category: "Full Stack",
-  },
-
-  // --- Existing Project 2 (from image) ---
-  {
-    id: 2,
     title: "Blog App with AI Post Generator",
     description:
-      "A full-stack blog app using the MERN stack – with full Markdown support, tag filtering, and integrated AI capabilities to generate article drafts based on user prompts.",
-    image: PROJECT_IMG_2,
-    tags: ["React", "Node.js", "MongoDB", "Tailwind"],
+      "A full-stack blog app using the MERN stack - with full Markdown support, tag filtering, and integrated AI capabilities to generate article drafts based on user prompts.",
+    image: "",
+    tags: ["React", "Mongo DB", "Express JS", "Node JS", "Tailwind CSS"],
     liveUrl: "https://jobify-one.vercel.app",
-    githubUrl: "#", // Placeholder URL
+    githubUrl: "https://github.com/chkrishnaa/jobify",
     featured: true,
     category: "Full Stack",
   },
 
-  // --- New Project 3 ---
   {
-    id: 3,
+    id: 2,
     title: "Real-Time Collaborative Code Editor",
     description:
       "A web-based editor leveraging WebSockets for simultaneous, real-time code collaboration between multiple users, complete with syntax highlighting and file sharing.",
-    image: PROJECT_IMG_3,
-    tags: ["Next.js", "WebSockets", "Prisma", "TypeScript"],
-    liveUrl: "https://time-to-wish.vercel.app", // Placeholder URL
-    githubUrl: "#", // Placeholder URL
+    image: "",
+    tags: ["React", "Mongo DB", "Express JS", "Node JS", "Tailwind CSS"],
+    liveUrl: "https://time-to-wish.vercel.app",
+    githubUrl: "https://github.com/chkrishnaa/time-to-wish",
     featured: true,
     category: "Frontend",
   },
 
-  // --- New Project 4 ---
+  {
+    id: 3,
+    title: "Blog App with AI Post Generator",
+    description:
+      "A full-stack blog app using the MERN stack – with full Markdown support, tag filtering, and integrated AI capabilities to generate article drafts based on user prompts.",
+    image: "",
+    tags: ["React"],
+    liveUrl: "https://kk-currency-converter.netlify.app",
+    githubUrl: "https://github.com/chkrishnaa/Currency-Converter",
+    featured: false,
+    category: "Frontend",
+  },
+
   {
     id: 4,
-    title: "Financial Dashboard (Data Visualization)",
+    title: "AI Image Creator",
     description:
-      "A responsive dashboard displaying complex financial metrics using D3.js and custom charts. Features include time-series data visualization and interactive filtering.",
-    image: PROJECT_IMG_4,
-    tags: ["React", "D3.js", "Recoil", "Sass"],
-    liveUrl: "", // Placeholder URL
-    githubUrl: "#", // Placeholder URL
+      "AI Image Creator converts text into stunning visuals using models like Stable Diffusion XL, Open Journey, and FLUX.1-dev. Enter a prompt and generate unique, high-quality images instantly. Perfect for artists, designers, and creators looking for AI-powered inspiration! 🎨🚀",
+    image: "",
+    tags: ["React"],
+    liveUrl: "https://ai-image-creater.netlify.app",
+    githubUrl: "https://github.com/chkrishnaa/ai-image-creater",
     featured: false,
-    category: "Data Viz",
-  },
-
-  // --- New Project 5 ---
-  {
-    id: 5,
-    title: "Serverless Image Resizing API",
-    description:
-      "A robust microservice built using AWS Lambda and API Gateway to automatically resize and optimize images uploaded to an S3 bucket, focusing on low latency and cost efficiency.",
-    image: PROJECT_IMG_5,
-    tags: ["AWS Lambda", "Node.js", "Serverless", "S3"],
-    liveUrl: "#", // Placeholder URL
-    githubUrl: "#", // Placeholder URL
-    featured: true,
-    category: "Backend",
-  },
-
-  // --- New Project 6 ---
-  {
-    id: 6,
-    title: "Task Management App (Trello Clone)",
-    description:
-      "A Kanban-style task management application with drag-and-drop functionality, persistent storage via Firebase, and user authentication. Optimized for mobile use.",
-    image: PROJECT_IMG_6,
-    tags: ["React", "Firebase", "Zustand", "Tailwind"],
-    liveUrl: "#", // Placeholder URL
-    githubUrl: "#", // Placeholder URL
-    featured: false,
-    category: "Full Stack",
-  },
-
-  // --- New Project 7 ---
-  {
-    id: 7,
-    title: "Custom CLI Weather Tool",
-    description:
-      "A command-line interface utility that fetches and displays real-time weather data from a public API, offering forecasts and local alerts directly in the terminal.",
-    image: PROJECT_IMG_7,
-    tags: ["Node.js", "CLI", "Axios", "JavaScript"],
-    liveUrl: "#", // Placeholder URL
-    githubUrl: "#", // Placeholder URL
-    featured: false,
-    category: "Backend",
-  },
-
-  // --- New Project 8 ---
-  {
-    id: 8,
-    title: "Portfolio Generator (SaaS)",
-    description:
-      "A Software as a Service (SaaS) application that allows users to quickly generate and customize professional developer portfolios using pre-built React templates and headless CMS data.",
-    image: PROJECT_IMG_8,
-    tags: ["Next.js", "Strapi CMS", "PostgreSQL", "Stripe"],
-    liveUrl: "#", // Placeholder URL
-    githubUrl: "#", // Placeholder URL
-    featured: true,
-    category: "Full Stack",
+    category: "Frontend",
   },
 ];
 

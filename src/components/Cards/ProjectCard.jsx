@@ -47,7 +47,7 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
             src={previewSrc || project.image}
             alt={project.title}
             onError={() => setHasError(true)}
-            className='w-full h-60 object-fit transition-transform duration-700 group-hover:scale-105'
+            className="w-full h-60 object-fit transition-transform duration-700 group-hover:scale-105"
           />
           {project.featured && (
             <div className="absolute top-4 left-4">
@@ -77,6 +77,8 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
           >
             <motion.a
               href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ y: 20, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3 }}
@@ -88,6 +90,8 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
 
             <motion.a
               href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ y: 20, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3 }}
@@ -100,13 +104,13 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
         </div>
 
         <div className="p-6">
-          <h3 className="text-xl font-medium mb-3 group-hover:text-blue-500 transition-colors">
+          <h3 className="text-xl font-medium mb-3 group-hover:text-blue-500 transition-colors line-clamp-1">
             {project.title}
           </h3>
           <p
-            className={`text-sm leading-relaxed mb-4 ${
+            className={`text-sm leading-relaxed mb-4 text-justify ${
               isDarkMode ? "text-gray-400" : "text-gray-600"
-            }`}
+            } line-clamp-6`}
           >
             {project.description}
           </p>

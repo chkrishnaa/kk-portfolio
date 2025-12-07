@@ -3,8 +3,9 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Mail, Heart, ArrowUp, Code2 } from "lucide-react";
 
 import { useTheme } from "../../context/ThemeContext";
-import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
 import { containerVariants, itemVariants } from "../../utils/helper";
+import KK_LOGO_IMAGE from "../../assets/KkImages/KK_Logo_Image.png";
 
 const Footer = () => {
   const { isDarkMode } = useTheme();
@@ -17,25 +18,25 @@ const Footer = () => {
     {
       name: "Github",
       icon: FiGithub,
-      url: "https://github.com", // Changed to a placeholder
+      url: "https://github.com/chkrishnaa", // Changed to a placeholder
       color: "hover:text-gray-400",
     },
     {
       name: "LinkedIn",
       icon: FiLinkedin,
-      url: "https://linkedin.com", // Changed to a placeholder
+      url: "https://www.linkedin.com/in/krishnakumar-chaurashiya-07021a286", // Changed to a placeholder
       color: "hover:text-blue-400",
     },
     {
-      name: "Twitter",
-      icon: FiTwitter,
+      name: "Instagram",
+      icon: FiInstagram,
       url: "https://twitter.com", // Changed to a placeholder
       color: "hover:text-sky-400",
     },
     {
       name: "Email",
       icon: Mail,
-      url: "mailto:Y5aE8@example.com", // Changed to a placeholder
+      url: "chkrishna6590@gmail.com",
       color: "hover:text-green-400",
     },
   ];
@@ -48,7 +49,7 @@ const Footer = () => {
   };
 
   const AnimatedGradientLine = () => (
-    <div className="absolute top-0 left-0 w-full h-px overflow-hidden">
+    <div className="absolute top-0 left-0 w-full h-[10px] overflow-hidden">
       <motion.div
         className={`h-px bg-gradient-to-r ${
           isDarkMode
@@ -130,7 +131,7 @@ const Footer = () => {
                   }}
                   className="text-blue-500"
                 >
-                  <Code2 size={20}></Code2>
+                  <img src={KK_LOGO_IMAGE} className="w-8 h-8"></img>
                 </motion.div>
                 <span>Krishnakumar Chaurashiya</span>
               </motion.div>
@@ -186,7 +187,7 @@ const Footer = () => {
                 }`}
               ></div>
               <motion.div
-                animate={{ scale: [1, 2, 1] }}
+                animate={{ scale: [1, 1.5, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="text-red-500"
               >

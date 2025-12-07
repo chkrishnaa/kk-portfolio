@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Sun, Moon, Menu, X } from "lucide-react";
+import { Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import KK_LOGO_IMAGE from "../assets/KkImages/KK_Logo_Image.png";
 
 const Navbar = () => {
   const { isDarkMode, toggleDarkMode } = useTheme();
@@ -28,7 +29,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05 }}
           className="flex items-center space-x-2"
         >
-          <Code2 size={24} className="w-6 h-6 text-blue-500" />
+          <img src={KK_LOGO_IMAGE} alt="KK Logo" className="w-8 h-8 text-blue-500" />
           <span className={`text-lg ml-1 ${isDarkMode ? "text-gray-50" : "text-gray-900"}`}>Krishnakumar</span>
         </motion.div>
 
