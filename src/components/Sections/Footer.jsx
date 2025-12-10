@@ -31,7 +31,7 @@ const Footer = () => {
       name: "Instagram",
       icon: FiInstagram,
       url: "https://twitter.com", // Changed to a placeholder
-      color: "hover:text-sky-400",
+      color: "hover:text-rose-400",
     },
     {
       name: "Email",
@@ -120,7 +120,7 @@ const Footer = () => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400 }}
-                className="inline-flex items-center space-x-2 text-2xl font-medium"
+                className="inline-flex items-center space-x-4 text-2xl font-medium"
               >
                 <motion.div
                   animate={{ rotate: 360 }}
@@ -157,7 +157,6 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2, rotate: [0, -5, 5, 0] }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -179,20 +178,14 @@ const Footer = () => {
 
             <motion.div
               variants={itemVariants}
-              className="flex items-center justify-center space-x-4"
+              className="flex items-center justify-center space-x-2"
             >
               <div
                 className={`h-px w-16 ${
                   isDarkMode ? "bg-gray-700" : "bg-gray-300"
                 }`}
               ></div>
-              <motion.div
-                animate={{ scale: [1, 1.5, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-red-500"
-              >
-                <Heart size={20} fill="currentColor" />
-              </motion.div>
+              <span>❤️❤️❤️</span>
               <div
                 className={`h-px w-16 ${
                   isDarkMode ? "bg-gray-700" : "bg-gray-300"

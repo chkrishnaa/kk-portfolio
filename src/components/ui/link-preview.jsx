@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 
@@ -29,22 +29,43 @@ export const LinkPreview = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [canShowPreview, setCanShowPreview] = useState(false);
+  const pageLoadTimeRef = useRef(Date.now());
   const previewUrl = hasError ? null : buildPreviewUrl(url);
+
+  useEffect(() => {
+    // Wait 5 seconds after page load before allowing previews
+    const timer = setTimeout(() => {
+      setCanShowPreview(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleMouseEnter = () => {
+    if (canShowPreview) {
+      setIsHovered(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
   return (
     <span
       className={`relative inline-flex items-center font-semibold text-blue-500 hover:text-blue-400 transition-colors duration-200 ${className}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onFocus={() => setIsHovered(true)}
-      onBlur={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onFocus={handleMouseEnter}
+      onBlur={handleMouseLeave}
     >
       <a href={url} target="_blank" rel="noreferrer" className="underline">
         {children}
       </a>
 
       <AnimatePresence>
-        {isHovered && previewUrl && (
+        {isHovered && previewUrl && canShowPreview && (
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -78,4 +99,3 @@ export const LinkPreview = ({
 };
 
 export default LinkPreview;
-

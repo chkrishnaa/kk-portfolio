@@ -254,10 +254,10 @@ const ContactSection = () => {
                     className={`flex items-center space-x-4 p-4 rounded-xl border transition-all duration-300 
                     ${
                       isDarkMode
-                        ? "bg-gray-800/50 border-gray-700 hover:border-gray-600"
-                        : "bg-gray-50/80 border-gray-300 hover:border-gray-300"
+                        ? "bg-gray-800/50 border-gray-700"
+                        : "bg-gray-50/80 border-gray-300"
                     }
-                  } ${socialLink.bgColor} ${socialLink.color}`}
+                  } ${socialLink.bgColor} ${socialLink.color} ${socialLink.border}`}
                   >
                     <socialLink.icon size={20} className="" />
                     <span className="font-medium">{socialLink.name}</span>

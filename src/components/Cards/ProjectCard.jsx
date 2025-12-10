@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import { FiGithub } from 'react-icons/fi';
+import { ExternalLink, BookOpen } from "lucide-react";
+import { FiGithub } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import { buildPreviewUrl } from "../ui/link-preview";
 
 const ProjectCard = ({ project, index, isDarkMode }) => {
   const [hasError, setHasError] = useState(false);
+  const [canShowPreview, setCanShowPreview] = useState(false);
+
+  const navigate = useNavigate();
   const previewSrc = hasError
     ? project.image
     : buildPreviewUrl(project.liveUrl);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCanShowPreview(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const cardVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -73,33 +85,53 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center space-x-4 opacity-0 transition-all duration-300"
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center space-x-3 opacity-0 transition-all duration-300"
           >
-            <motion.a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ y: 20, opacity: 0.5 }}
+            <motion.button
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(`/project/${project.id}`);
+              }}
+              initial={{ y: 10, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3 }}
+              className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 text-sm font-medium transition-all duration-300"
+            >
+              <BookOpen size={16}></BookOpen>
+              <span>Overview</span>
+            </motion.button>
+
+            <motion.button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(project.liveUrl, "_blank");
+              }}
+              initial={{ y: 10, opacity: 0.5 }}
+              whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              label="Live Demo"
+              icon={ExternalLink}
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 text-sm font-medium transition-all duration-300"
             >
               <ExternalLink size={16}></ExternalLink>
               <span>Live Demo</span>
-            </motion.a>
+            </motion.button>
 
-            <motion.a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ y: 20, opacity: 0.5 }}
+            <motion.button
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open(project.githubUrl, "_blank");
+              }}
+              initial={{ y: 10, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              className={`border-2 border-white text-white hover:bg-white hover:text-gray-900 flex items-center space-x-2 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300`}
+              label="GitHub"
+              icon={FiGithub}
+              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-4 py-2 text-sm font-medium rounded-full flex items-center space-x-2 transition-all duration-300"
             >
               <FiGithub size={16}></FiGithub>
               <span>GitHub</span>
-            </motion.a>
+            </motion.button>
           </motion.div>
         </div>
 
@@ -134,4 +166,4 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
   );
 };
 
-export default ProjectCard
+export default ProjectCard;
