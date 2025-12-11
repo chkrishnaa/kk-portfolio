@@ -126,7 +126,23 @@ export const PROJECTS = [
   {
     id: 3,
     title: "Currency Converter",
+    overview:
+      "A sleek currency converter that lets you enter an amount, pick currencies with flag icons 🇺🇸➡️🇮🇳, use the flip button 🔁, and get instant exchange rates. Features a glass-effect UI with smooth and accurate conversions.",
     description: `This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
+
+Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions. This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
+
+Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions. This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
+
+Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions. This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
+
+Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions. This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
+
+Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions. This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
+
+Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions. This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
+
+Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions. This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
 
 Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions.`,
     image: "",
@@ -140,21 +156,58 @@ Once the currencies and amount are selected, users can tap the "Get Exchange Rat
     status: "Live Project",
     technologies: ["React", "CSS", "API Integration"],
     videoUrl: "https://www.youtube.com/embed/ZmAIubnCDrs?si=Se3fVv_QHiERmlf4",
-    galleryImages: [
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
+    galleryImages: [PROJECT_IMG_1],
+    externalLinks: [
+      {
+        name: "Currency Converter Tutorial - YouTube",
+        url: "https://www.youtube.com/watch?v=example1",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "React Currency Converter Guide",
+        url: "https://github.com/example/currency-converter",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Exchange Rate API Documentation",
+        url: "https://example.com/api-docs.pdf",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Design Inspiration - Dribbble",
+        url: "https://dribbble.com/shots/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "UI/UX Case Study - Behance",
+        url: "https://www.behance.net/gallery/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "",
+        url: "https://www.linkedin.com/posts/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Project Showcase - Instagram",
+        url: "https://www.instagram.com/p/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "",
+        url: "https://twitter.com/example/status/123",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Community Discussion - Facebook",
+        url: "https://www.facebook.com/groups/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Design Board - Pinterest",
+        url: "https://www.pinterest.com/pin/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
     ],
   },
 

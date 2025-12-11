@@ -41,7 +41,7 @@ const Overview = ({ description, isDarkMode }) => {
     >
       <h1 className="text-2xl font-bold mb-4">Description</h1>
       <div
-        className={`markdown-content text-base leading-relaxed ${
+        className={`markdown-content text-sm text-justify leading-relaxed ${
           isDarkMode ? "text-gray-300" : "text-gray-700"
         } [&>h1]:text-3xl [&>h1]:font-bold [&>h1]:mb-4 [&>h1]:mt-6 ${
           isDarkMode ? "[&>h1]:text-gray-100" : "[&>h1]:text-gray-900"
@@ -96,7 +96,7 @@ const Overview = ({ description, isDarkMode }) => {
             {description}
           </ReactMarkdown>
         ) : (
-          <p className="text-lg leading-relaxed whitespace-pre-wrap">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap">
             {description}
           </p>
         )}

@@ -93,7 +93,7 @@ const ImageGallery = ({ galleryImages, title, isDarkMode }) => {
         {/* Special layout for 5 images */}
         {imageCount === 5 ? (
           <div
-            className={`grid grid-cols-6 gap-1 rounded-lg overflow-hidden aspect-square ${
+            className={`grid grid-cols-6 gap-1 rounded-xl overflow-hidden aspect-square ${
               isDarkMode ? "bg-gray-800" : "bg-gray-100"
             }`}
             style={{ gridTemplateRows: "repeat(2, 1fr)" }}
@@ -114,7 +114,7 @@ const ImageGallery = ({ galleryImages, title, isDarkMode }) => {
           </div>
         ) : (
           <div
-            className={`grid ${grid} gap-1 rounded-lg overflow-hidden aspect-square ${
+            className={`grid ${grid} gap-1 rounded-xl overflow-hidden aspect-square ${
               isDarkMode ? "bg-gray-800" : "bg-gray-100"
             }`}
             style={{

@@ -104,7 +104,7 @@ const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.1 }}
-      className={`rounded-2xl border overflow-hidden relative group cursor-pointer ${
+      className={`rounded-xl border overflow-hidden relative group cursor-pointer ${
         isDarkMode
           ? "bg-gray-900/50 border-gray-800"
           : "bg-white/50 border-gray-200"
