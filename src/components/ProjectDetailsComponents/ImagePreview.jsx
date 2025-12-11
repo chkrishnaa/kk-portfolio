@@ -8,10 +8,10 @@ const ImagePreview = ({ project, isDarkMode }) => {
   const [hasError, setHasError] = useState(false);
   const previewLiveSrc = hasError
     ? project.image
-    : buildPreviewUrl(project.liveUrl);
+    : buildPreviewUrl(project.liveUrl, isDarkMode);
   const previewGithubSrc = hasError
     ? project.image
-    : buildPreviewUrl(project.githubUrl);
+    : buildPreviewUrl(project.githubUrl, isDarkMode);
 
   return (
     <div className="flex w-full flex-col justify-between gap-8">
@@ -62,8 +62,6 @@ const ImagePreview = ({ project, isDarkMode }) => {
               initial={{ y: 10, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              label="Live Demo"
-              icon={ExternalLink}
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 text-sm font-medium transition-all duration-300"
             >
               <ExternalLink size={16}></ExternalLink>
@@ -120,8 +118,6 @@ const ImagePreview = ({ project, isDarkMode }) => {
               initial={{ y: 10, opacity: 0.5 }}
               whileHover={{ y: 0, opacity: 1, scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              label="GitHub"
-              icon={FiGithub}
               className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-4 py-2 text-sm font-medium rounded-full flex items-center space-x-2 transition-all duration-300"
             >
               <FiGithub size={16}></FiGithub>

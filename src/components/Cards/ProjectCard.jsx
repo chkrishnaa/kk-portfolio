@@ -12,7 +12,7 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
   const navigate = useNavigate();
   const previewSrc = hasError
     ? project.image
-    : buildPreviewUrl(project.liveUrl);
+    : buildPreviewUrl(project.liveUrl, isDarkMode);
 
   useEffect(() => {
     const timer = setTimeout(() => {

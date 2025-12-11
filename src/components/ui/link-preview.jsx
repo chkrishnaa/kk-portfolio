@@ -2,8 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 
-export const buildPreviewUrl = (url) => {
-  const { isDarkMode } = useTheme();
+export const buildPreviewUrl = (url, isDarkMode = false) => {
   if (!url || url === "#" || !url.startsWith("http")) {
     return null;
   }
@@ -27,11 +26,12 @@ export const LinkPreview = ({
   previewWidth = 420,
   previewHeight = 260,
 }) => {
+  const { isDarkMode } = useTheme();
   const [isHovered, setIsHovered] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [canShowPreview, setCanShowPreview] = useState(false);
   const pageLoadTimeRef = useRef(Date.now());
-  const previewUrl = hasError ? null : buildPreviewUrl(url);
+  const previewUrl = hasError ? null : buildPreviewUrl(url, isDarkMode);
 
   useEffect(() => {
     // Wait 5 seconds after page load before allowing previews

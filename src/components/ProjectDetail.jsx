@@ -20,15 +20,30 @@ const ProjectDetail = () => {
   const leftContentRef = useRef(null);
   const rightSidebarRef = useRef(null);
   const isScrollingRef = useRef(false);
+  const [isMultiColumn, setIsMultiColumn] = useState(true);
 
   const project = PROJECTS.find((p) => p.id === parseInt(projectId));
 
-  // Synchronized scrolling effect
+  // Check if we're in multi-column layout (lg breakpoint = 1024px)
+  useEffect(() => {
+    const checkLayout = () => {
+      setIsMultiColumn(window.innerWidth >= 1024);
+    };
+
+    // Check on mount
+    checkLayout();
+
+    // Check on resize
+    window.addEventListener("resize", checkLayout);
+    return () => window.removeEventListener("resize", checkLayout);
+  }, []);
+
+  // Synchronized scrolling effect - only in multi-column layout
   useEffect(() => {
     const leftContent = leftContentRef.current;
     const rightSidebar = rightSidebarRef.current;
 
-    if (!leftContent || !rightSidebar) return;
+    if (!leftContent || !rightSidebar || !isMultiColumn) return;
 
     const handleLeftScroll = () => {
       if (isScrollingRef.current) return;
@@ -95,7 +110,7 @@ const ProjectDetail = () => {
       leftContent.removeEventListener("scroll", handleLeftScroll);
       rightSidebar.removeEventListener("scroll", handleRightScroll);
     };
-  }, [project]);
+  }, [project, isMultiColumn]);
 
   if (!project) {
     return (
@@ -137,7 +152,7 @@ const ProjectDetail = () => {
           {/* Left Column - Main Content */}
           <div
             ref={leftContentRef}
-            className="lg:col-span-2 space-y-8 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2 custom-scrollbar"
+            className="lg:col-span-2 space-y-8 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto pr-2 custom-scrollbar mb-4 lg:mb-0"
           >
             {/* Video Iframe Section - Full Width */}
             {project.videoUrl && (
@@ -167,7 +182,7 @@ const ProjectDetail = () => {
           <div className="lg:col-span-1">
             <div
               ref={rightSidebarRef}
-              className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto space-y-8 pr-2 custom-scrollbar"
+              className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto space-y-8 pr-2 custom-scrollbar"
             >
               <ImagePreview project={project} isDarkMode={isDarkMode} />
               <Sidebar project={project} isDarkMode={isDarkMode} />
