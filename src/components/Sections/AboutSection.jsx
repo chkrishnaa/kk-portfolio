@@ -1,9 +1,8 @@
 import {useRef} from 'react';
 import {motion, useInView, useScroll, useTransform} from 'framer-motion';
 import {useTheme} from '../../context/ThemeContext';
-import {JOURNEY_STEPS, PASSIONS} from '../../utils/data';
+import { JOURNEY_STEPS, PASSIONS } from '../../utils/Data/aboutData';
 import SIGNATURE from '../../assets/KkImages/Signature.png';
-import PROFILE_PHOTO from "../../assets/KkImages/Krishnakumar.jpeg";
 import { containerVariants, itemVariants } from "../../utils/helper";
 
 const AboutSection = () => {

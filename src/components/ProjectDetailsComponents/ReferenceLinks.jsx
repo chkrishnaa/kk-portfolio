@@ -224,13 +224,13 @@ const ReferenceLinks = ({ project, isDarkMode }) => {
     }
   };
 
-  const renderPreviewImage = (url, className = "rounded-lg") => {
+  const renderPreviewImage = (url, objectFit = "contain", className = "") => {
     const previewUrl = url ? buildPreviewUrl(url, isDarkMode) : null;
     return previewUrl ? (
       <img
         src={previewUrl}
         alt="Preview"
-        className={`w-full h-full object-cover ${className}`}
+        className={`w-full h-full object-${objectFit} ${className}`}
         loading="lazy"
         onError={(e) => {
           e.currentTarget.style.display = "none";
@@ -270,8 +270,8 @@ const ReferenceLinks = ({ project, isDarkMode }) => {
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 className={`relative group p-3 rounded-lg ${
                   isDarkMode
-                    ? "bg-gray-700/50 hover:bg-gray-800/70"
-                    : "bg-gray-200/50 hover:bg-gray-100/70"
+                    ? "bg-gray-800/50 hover:bg-gray-700/70"
+                    : "bg-gray-200/50 hover:bg-gray-300/70"
                 } transition-colors`}
                 onMouseEnter={(e) => {
                   setHoveredIndex(index);
@@ -297,28 +297,26 @@ const ReferenceLinks = ({ project, isDarkMode }) => {
                 }}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2 min-w-0">
                   {/* Left + middle clickable area */}
                   <button
                     type="button"
                     onClick={() => openModal(index)}
-                    className="flex items-center flex-1 text-left space-x-4 focus:outline-none"
+                    className="flex items-center flex-1 min-w-0 text-left space-x-3 focus:outline-none overflow-hidden"
                   >
                     <div
-                      className={`${platformColor} text-white rounded flex items-center justify-center shrink-0 h-8 aspect-square`}
+                      className={`${platformColor} text-white rounded flex items-center justify-center shrink-0 h-8 w-8`}
                     >
                       <IconComponent size={24} />
                     </div>
 
-                    <div className="flex-1 min-w-0">
+                    <div className="flex-1 min-w-0 overflow-hidden">
                       <p
-                        className={`font-medium truncate ${
+                        className={`font-medium line-clamp-1 ${
                           isDarkMode ? "text-white" : "text-gray-900"
                         } ${
-                          hasName
-                            ? "group-hover:text-blue-500"
-                            : "text-blue-500 underline"
-                        }`}
+                          hasName ? "" : "group-hover:underline"
+                        } group-hover:text-blue-500`}
                         title={displayName}
                       >
                         {displayName}
@@ -334,12 +332,13 @@ const ReferenceLinks = ({ project, isDarkMode }) => {
                   </button>
 
                   {/* Right: Action Icons */}
-                  <div className="flex items-center space-x-2 ml-4 shrink-0">
+                  <div className="flex items-center space-x-1 shrink-0">
                     <motion.a
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
+                      initial={{ scale: 1.0 }}
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.9 }}
                       className={`p-2 rounded ${
                         isDarkMode
@@ -354,7 +353,8 @@ const ReferenceLinks = ({ project, isDarkMode }) => {
 
                     <div className="relative">
                       <motion.button
-                        whileHover={{ scale: 1.1 }}
+                        initial={{ scale: 1.0 }}
+                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.9 }}
                         className={`p-2 rounded ${
                           isDarkMode
@@ -491,13 +491,13 @@ const ReferenceLinks = ({ project, isDarkMode }) => {
             }}
           >
             <div
-              className={`w-[400px] h-[300px] overflow-hidden rounded-xl border ${
+              className={`w-[400px] aspect-video overflow-hidden rounded-xl border ${
                 isDarkMode
                   ? "border-gray-800 bg-gray-900"
                   : "border-gray-200 bg-white"
               }`}
             >
-              {renderPreviewImage(links[hoveredIndex].url, "")}
+              {renderPreviewImage(links[hoveredIndex].url, "contain")}
             </div>
           </motion.div>
         )}
@@ -552,12 +552,9 @@ const ReferenceLinks = ({ project, isDarkMode }) => {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: direction * -80 }}
                     transition={{ duration: 0.25 }}
-                    className="aspect-video w-full flex items-center justify-center bg-gray-900"
+                    className="w-full aspect-video flex items-center justify-center bg-gray-900"
                   >
-                    {renderPreviewImage(
-                      links[currentIndex].url,
-                      "h-full object-contain"
-                    )}
+                    {renderPreviewImage(links[currentIndex].url, "contain")}
                   </motion.div>
                 </AnimatePresence>
 

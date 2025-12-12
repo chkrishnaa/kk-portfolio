@@ -1,0 +1,180 @@
+import PROJECT_IMG_1 from "../../assets/ProjectImages/CurrencyConverterThumbnail.png";
+
+export const PROJECTS = [
+  {
+    id: 1,
+    title: "Blog App with AI Post Generator",
+    description:
+      "A full-stack blog app using the MERN stack - with full Markdown support, tag filtering, and integrated AI capabilities to generate article drafts based on user prompts.",
+    image: "",
+    technologies: [
+      "React",
+      "Mongo DB",
+      "Express JS",
+      "Node JS",
+      "Tailwind CSS",
+    ],
+    tags: [],
+
+    liveUrl: "https://jobify-one.vercel.app",
+    githubUrl: "https://github.com/chkrishnaa/jobify",
+    featured: true,
+    category: "Full Stack",
+    // Optional fields for project detail page
+    role: "Lead Full-stack Developer",
+    duration: "Jan 2024 - Apr 2024",
+    status: "Live Project",
+    technologies: ["React", "Node", "Express", "MongoDB", "Tailwind CSS"],
+    videoUrl: "", // Optional video URL
+    galleryImages: [], // Optional array of image URLs
+  },
+
+  {
+    id: 2,
+    title: "Real-Time Collaborative Code Editor",
+    description:
+      "A web-based editor leveraging WebSockets for simultaneous, real-time code collaboration between multiple users, complete with syntax highlighting and file sharing.",
+    image: "",
+    technologies: [
+      "React",
+      "Mongo DB",
+      "Express JS",
+      "Node JS",
+      "Tailwind CSS",
+    ],
+    tags: [],
+    liveUrl: "https://time-to-wish.vercel.app",
+    githubUrl: "https://github.com/chkrishnaa/time-to-wish",
+    featured: true,
+    category: "Frontend",
+    role: "Full-stack Developer",
+    duration: "Mar 2024 - May 2024",
+    status: "Live Project",
+    technologies: ["React", "Node", "Express", "MongoDB", "WebSockets"],
+    videoUrl: "",
+    galleryImages: [],
+  },
+
+  {
+    id: 3,
+    title: "Currency Converter",
+    overview:
+      "A sleek currency converter that lets you enter an amount, pick currencies with flag icons 🇺🇸➡️🇮🇳, use the flip button 🔁, and get instant exchange rates. Features a glass-effect UI with smooth and accurate conversions.",
+    description: `This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
+    
+Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions.`,
+    image: "",
+    technologies: ["React", "JaveScript", "CSS", "API Integration"],
+    tags: [
+      "currency",
+      "rate-conversion",
+      "exchange-rates",
+      "fixed-rates",
+      "get-exchange",
+      "real-time-exchange-rates",
+      "money-conversion",
+      "global-currency",
+    ],
+    liveUrl: "https://kk-currency-converter.netlify.app",
+    githubUrl: "https://github.com/chkrishnaa/Currency-Converter",
+    featured: false,
+    category: "Frontend",
+    role: "Frontend Developer",
+    duration: "Feb 2024 - Mar 2024",
+    status: "Live Project",
+    technologies: ["React", "JaveScript", "CSS", "API Integration"],
+    videoUrl: "https://www.youtube.com/embed/ZmAIubnCDrs?si=Se3fVv_QHiERmlf4",
+    galleryImages: [
+      PROJECT_IMG_1,
+      PROJECT_IMG_1,
+      PROJECT_IMG_1,
+      PROJECT_IMG_1,
+      PROJECT_IMG_1,
+      PROJECT_IMG_1,
+    ],
+    externalLinks: [
+      {
+        name: "Currency Converter Tutorial - YouTube",
+        url: "https://www.youtube.com/watch?v=example1",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "React Currency Converter Guide",
+        url: "https://github.com/example/currency-converter",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Exchange Rate API Documentation",
+        url: "https://www.youtube.com/watch?v=Y1Q4XXXmVk4",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Design Inspiration - Dribbble",
+        url: "https://dribbble.com/shots/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "UI/UX Case Study - Behance",
+        url: "https://www.behance.net/gallery/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "",
+        url: "https://www.linkedin.com/posts/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Project Showcase - Instagram",
+        url: "https://www.instagram.com/p/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "",
+        url: "https://twitter.com/example/status/123",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Community Discussion - Facebook",
+        url: "https://www.facebook.com/groups/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+      {
+        name: "Design Board - Pinterest",
+        url: "https://www.pinterest.com/pin/example",
+        addedDate: "Mar 2, 2025, 8:41 PM",
+      },
+    ],
+  },
+
+  {
+    id: 4,
+    title: "AI Image Creator",
+    description:
+      "AI Image Creator converts text into stunning visuals using models like Stable Diffusion XL, Open Journey, and FLUX.1-dev. Enter a prompt and generate unique, high-quality images instantly. Perfect for artists, designers, and creators looking for AI-powered inspiration! 🎨🚀",
+    image: "",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    tags: ["image-generation", "ai-images", "artificial-intelligence"],
+    liveUrl: "https://ai-image-creater.netlify.app",
+    githubUrl: "https://github.com/chkrishnaa/ai-image-creater",
+    featured: false,
+    category: "Frontend",
+    role: "Frontend Developer",
+    duration: "Jan 2024 - Feb 2024",
+    status: "Live Project",
+    technologies: ["HTML", "CSS", "JavaScript", "AI APIs"],
+    videoUrl: "",
+    galleryImages: [],
+  },
+  // {
+  //   id: 5,
+  //   title: "AI Image Creator",
+  //   description:
+  //     "AI Image Creator converts text into stunning visuals using models like Stable Diffusion XL, Open Journey, and FLUX.1-dev. Enter a prompt and generate unique, high-quality images instantly. Perfect for artists, designers, and creators looking for AI-powered inspiration! 🎨🚀",
+  //   image: "",
+  //   tags: ["HTML", "CSS", "JavaScript"],
+  //   liveUrl: "https://krishnakumar-portfolio-04012005.netlify.app",
+  //   githubUrl: "https://github.com/chkrishnaa/ai-image-creater",
+  //   featured: false,
+  //   category: "Frontend",
+  // },
+];

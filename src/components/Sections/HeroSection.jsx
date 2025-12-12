@@ -72,8 +72,8 @@ const HeroSection = () => {
               repeat: Infinity,
               ease: "linear",
             }}
-            className={`absolute top-20 right-20 w-64 h-64 rounded-full blur-lg opacity-10 ${
-              isDarkMode ? "bg-blue-400" : "bg-blue-600"
+            className={`absolute top-20 right-20 w-64 h-64 rounded-full blur-3xl opacity-50 ${
+              isDarkMode ? "bg-blue-500" : "bg-blue-400"
             } `}
           ></motion.div>
 
@@ -87,8 +87,8 @@ const HeroSection = () => {
               repeat: Infinity,
               ease: "linear",
             }}
-            className={`absolute bottom-20 left-20 w-48 h-48 rounded-full blur-md opacity-10 ${
-              isDarkMode ? "bg-purple-400" : "bg-purple-600"
+            className={`absolute bottom-20 left-20 w-48 h-48 rounded-full blur-3xl opacity-50 ${
+              isDarkMode ? "bg-purple-500" : "bg-purple-400"
             } `}
           ></motion.div>
         </div>
@@ -419,6 +419,7 @@ const HeroSection = () => {
         >
           <ArrowDown
             size={20}
+            onClick={() => scrollToSection("about")}
             className={`${isDarkMode ? "text-gray-600" : "text-gray-400"}`}
           />
         </motion.div>

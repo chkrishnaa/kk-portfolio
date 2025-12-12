@@ -28,18 +28,20 @@ const getYouTubeThumbnail = (videoId, thumbnailUrl) => {
 };
 
 // Convert YouTube URL to embed format
-const getYouTubeEmbedUrl = (url, autoplay = false, startTime = 0) => {
+const getYouTubeEmbedUrl = (url, autoplay = false, startTime = 0, mute = false) => {
   const videoId = getYouTubeVideoId(url);
   if (!videoId) return url;
   
-  return `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? 1 : 0}&start=${startTime}&rel=0&modestbranding=1&mute=0`;
+  return `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? 1 : 0}&start=${startTime}&mute=${mute ? 1 : 0}&rel=0&modestbranding=1&controls=1&playsinline=1`;
 };
 
 const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [iframeKey, setIframeKey] = useState(0);
   const hoverTimeoutRef = useRef(null);
   const playTimeoutRef = useRef(null);
+  const iframeRef = useRef(null);
 
   const videoId = getYouTubeVideoId(videoUrl);
   const thumbnail = getYouTubeThumbnail(videoId, thumbnailUrl);
@@ -65,6 +67,9 @@ const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
     }
+    
+    // Force iframe reload for hover preview
+    setIframeKey(prev => prev + 1);
     
     // Stop hover preview after 10 seconds
     hoverTimeoutRef.current = setTimeout(() => {
@@ -92,12 +97,20 @@ const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
       clearTimeout(hoverTimeoutRef.current);
       hoverTimeoutRef.current = null;
     }
+    
+    // Force iframe reload for full play
+    setIframeKey(prev => prev + 1);
   };
 
   if (!videoUrl) return null;
 
   const showThumbnail = !isPlaying && !isHovered;
   const showIframe = isPlaying || isHovered;
+  
+  // Different embed URLs for hover (muted, 10 sec preview) vs click (full play)
+  const embedUrl = isPlaying 
+    ? getYouTubeEmbedUrl(videoUrl, true, 0, false) // Full play, unmuted
+    : getYouTubeEmbedUrl(videoUrl, true, 0, true); // Hover preview, muted
 
   return (
     <motion.div
@@ -113,9 +126,9 @@ const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
     >
-      <div className="aspect-video w-full relative">
+      <div className="aspect-video w-full relative bg-black">
         {showThumbnail && thumbnail && (
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 z-10">
             <img
               src={thumbnail}
               alt={title || "Video thumbnail"}
@@ -140,14 +153,21 @@ const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
         )}
 
         {showIframe && (
-          <iframe
-            src={getYouTubeEmbedUrl(videoUrl, true, 0)}
-            className="w-full h-full"
-            style={{ pointerEvents: isPlaying ? "auto" : "none" }}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title={title || "Video"}
-          />
+          <div className="absolute inset-0 w-full h-full z-20">
+            <iframe
+              key={`${iframeKey}-${isPlaying ? 'play' : 'hover'}`}
+              ref={iframeRef}
+              src={embedUrl}
+              className="w-full h-full"
+              style={{ 
+                pointerEvents: isPlaying ? "auto" : "none",
+                border: 'none'
+              }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              title={title || "Video"}
+            />
+          </div>
         )}
       </div>
     </motion.div>

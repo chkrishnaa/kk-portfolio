@@ -13,7 +13,7 @@ const BackButton = () => {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
-      className={`mb-8 inline-flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
+      className={`mb-8 h-12 inline-flex items-center space-x-2 px-4 rounded-lg text-sm font-medium transition-all duration-300 border ${
         isDarkMode
           ? "bg-gray-900/50 hover:bg-gray-800/50 text-gray-300 hover:text-white border-gray-700"
           : "bg-white/50 hover:bg-gray-100/50 text-gray-700 hover:text-gray-900 border-gray-300"

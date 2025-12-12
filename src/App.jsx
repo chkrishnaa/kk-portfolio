@@ -8,7 +8,7 @@ import ProjectsSection from './components/Sections/ProjectsSection';
 import AboutSection from './components/Sections/AboutSection';
 import ContactSection from "./components/Sections/ContactSection";
 import Footer from './components/Sections/Footer';
-import ProjectDetail from './components/ProjectDetail';
+import ProjectDetail from './pages/ProjectDetail';
 
 const Home = () => {
   return (

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { AnimatePresence, motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Send } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
-import { CONTACT_INFO, SOCIAL_LINKS } from "../../utils/data";
+import { CONTACT_INFO, SOCIAL_LINKS } from "../../utils/Data/contactData";
 import { containerVariants, itemVariants } from "../../utils/helper";
 import TextInput from "../Input/TextInput";
 import SuccessModal from "../Modals/SuccessModal";
