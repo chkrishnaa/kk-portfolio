@@ -60,9 +60,52 @@ export const PROJECTS = [
     title: "Currency Converter",
     overview:
       "A sleek currency converter that lets you enter an amount, pick currencies with flag icons 🇺🇸➡️🇮🇳, use the flip button 🔁, and get instant exchange rates. Features a glass-effect UI with smooth and accurate conversions.",
-    description: `This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
-    
-Once the currencies and amount are selected, users can tap the "Get Exchange Rate" button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions.`,
+    description: 
+    `
+# 🌍 Currency Converter App
+
+This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
+
+Once the currencies and amount are selected, users can tap the “Get Exchange Rate” button to fetch the latest conversion value. The result appears neatly below, showing the exact conversion in a clear and bold format—e.g., 100 USD = 9002.51 INR. The overall design combines a glassy card effect with a futuristic background, creating a stylish and user-friendly experience. The interface not only looks visually appealing but also ensures smooth usability for anyone who wants quick and accurate currency conversions.
+
+---
+
+## ✨ Features
+
+- Convert any amount between global currencies
+- Flag-based currency dropdowns for better identification
+- Swap/flip button to reverse currency direction instantly
+- Real-time conversion using Exchange Rate API
+- Glass-effect UI with futuristic design
+- Responsive layout for mobile and desktop
+- Fast performance with React + Vite
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- React (Vite)
+- JavaScript
+
+### Styling
+- CSS3
+
+### APIs
+- Exchange Rate API
+- Flags API
+
+---
+
+## 🚀 For getting Exchange Rate API Key
+Visit to this link: https://www.exchangerate-api.com
+
+---
+
+\`\`\`js
+console.log("Hello, World!");
+\`\`\`
+`,
     image: "",
     technologies: ["React", "JaveScript", "CSS", "API Integration"],
     tags: [
@@ -83,15 +126,8 @@ Once the currencies and amount are selected, users can tap the "Get Exchange Rat
     duration: "Feb 2024 - Mar 2024",
     status: "Live Project",
     technologies: ["React", "JaveScript", "CSS", "API Integration"],
-    videoUrl: "https://www.youtube.com/embed/ZmAIubnCDrs?si=Se3fVv_QHiERmlf4",
-    galleryImages: [
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-      PROJECT_IMG_1,
-    ],
+    videoUrl: "https://www.youtube.com/embed/eC2Rq-AYMqo?si=8O2730P5yX_ikuec",
+    galleryImages: [PROJECT_IMG_1],
     externalLinks: [
       {
         name: "Currency Converter Tutorial - YouTube",

@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import { FiCopy, FiCheck } from "react-icons/fi";
+
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   vscDarkPlus,
   vs,
 } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import LinkPreview from "../ui/link-preview";
+import { useState } from "react";
 
 // Custom link component for markdown with preview
 const LinkRenderer = ({ href, children }) => {
@@ -16,17 +20,95 @@ const LinkRenderer = ({ href, children }) => {
   return <a href={href}>{children}</a>;
 };
 
+
+const CodeBlock = ({ inline, className, children, isDarkMode }) => {
+  const [copied, setCopied] = useState(false);
+
+  if (inline) {
+    return (
+      <code
+        className={`px-2 py-1 rounded text-sm ${
+          isDarkMode ? "bg-gray-800 text-blue-300" : "bg-gray-100 text-blue-600"
+        }`}
+        style={{
+          fontFamily:
+            'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+        }}
+      >
+        {children}
+      </code>
+    );
+  }
+
+  const languageMatch = /language-(\w+)/.exec(className || "");
+  const language = languageMatch?.[1] || "text";
+
+  const code = String(children)
+    .replace(/\r\n/g, "\n")
+    .replace(/^\s+|\s+$/g, "");
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
+  return (
+    <div
+      className={`relative my-4 rounded-lg overflow-hidden border ${
+        isDarkMode ? "border-gray-700" : "border-gray-200"
+      }`}
+    >
+      {/* Copy button */}
+      <button
+        onClick={handleCopy}
+        className={`absolute top-2 right-2 z-10 flex items-center gap-2 px-2 py-2 rounded-md text-xs font-medium transition
+          ${
+            copied
+              ? isDarkMode
+                ? "text-green-600 bg-green-100 border border-green-500 dark:bg-green-900/30"
+                : "text-green-600 bg-green-100 border border-green-500"
+              : isDarkMode
+              ? "text-gray-300 bg-gray-800 hover:bg-gray-700"
+              : "text-gray-700 bg-gray-200 hover:bg-gray-300"
+          }
+        `}
+      >
+        {copied && <span>Copied!</span>}
+        {copied ? <FiCheck size={16} /> : <FiCopy size={16}/>}
+      </button>
+
+      <SyntaxHighlighter
+        language={language}
+        style={isDarkMode ? vscDarkPlus : vs}
+        PreTag="div"
+        customStyle={{
+          margin: 0,
+          borderRadius: "0.5rem",
+          background: isDarkMode ? "#0f172a" : "#f9fafb",
+          
+          fontSize: "1.0rem",
+        }}
+      >
+        {code}
+      </SyntaxHighlighter>
+    </div>
+  );
+};
+
+
+
 const Overview = ({ description, isDarkMode }) => {
   if (!description) return null;
 
   // Check if description is markdown
-  const isMarkdown =
-    typeof description === "string" &&
-    (description.includes("\n") ||
-      description.includes("#") ||
-      description.includes("**") ||
-      description.includes("[") ||
-      description.includes("```"));
+  // const isMarkdown =
+  //   typeof description === "string" &&
+  //   (description.includes("\n") ||
+  //     description.includes("#") ||
+  //     description.includes("**") ||
+  //     description.includes("[") ||
+  //     description.includes("```"));
 
   return (
     <motion.div
@@ -53,53 +135,34 @@ const Overview = ({ description, isDarkMode }) => {
           isDarkMode
             ? "[&>blockquote]:border-blue-400 [&>blockquote]:text-gray-300"
             : "[&>blockquote]:border-blue-500 [&>blockquote]:text-gray-600"
-        } [&>table]:w-full [&>table]:border-collapse [&>table]:my-4 [&>table>thead>tr>th]:border [&>table>thead>tr>th]:p-2 [&>table>tbody>tr>td]:border [&>table>tbody>tr>td]:p-2`}
+        } [&>table]:w-full [&>table]:border-collapse [&>table]:my-4 [&>table>thead>tr>th]:border [&>table>thead>tr>th]:p-2 [&>table>tbody>tr>td]:border [&>table>tbody>tr>td]:p-
+        [&>hr]:my-6
+        [&>hr]:border-0
+        [&>hr]:h-px
+        [&>hr]:bg-gray-900/40
+        dark:[&>hr]:bg-gray-400/40
+        `}
+
+        //for light mode not working hr
       >
-        {isMarkdown ? (
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              a: ({ node, ...props }) => <LinkRenderer {...props} />,
-              code: ({ node, inline, className, children, ...props }) => {
-                const match = /language-(\w+)/.exec(className || "");
-                return !inline && match ? (
-                  <SyntaxHighlighter
-                    style={isDarkMode ? vscDarkPlus : vs}
-                    language={match[1]}
-                    PreTag="div"
-                    {...props}
-                  >
-                    {String(children).replace(/\n$/, "")}
-                  </SyntaxHighlighter>
-                ) : (
-                  <code
-                    className={`px-2 py-1 rounded text-sm ${
-                      isDarkMode
-                        ? "bg-gray-800 text-blue-300"
-                        : "bg-gray-100 text-blue-600"
-                    }`}
-                    {...props}
-                  >
-                    {children}
-                  </code>
-                );
-              },
-              img: ({ src, alt }) => (
-                <img
-                  src={src}
-                  alt={alt}
-                  className="rounded-lg my-4 max-w-full"
-                />
-              ),
-            }}
-          >
-            {description}
-          </ReactMarkdown>
-        ) : (
-          <p className="text-sm leading-relaxed whitespace-pre-wrap">
-            {description}
-          </p>
-        )}
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw]}
+          components={{
+            a: LinkRenderer,
+            code: (props) => <CodeBlock {...props} isDarkMode={isDarkMode} />,
+            img: ({ src, alt }) => (
+              <img
+                src={src}
+                alt={alt}
+                className="rounded-lg my-4 max-w-full"
+                onError={(e) => (e.currentTarget.style.display = "none")}
+              />
+            ),
+          }}
+        >
+          {description}
+        </ReactMarkdown>
       </div>
     </motion.div>
   );

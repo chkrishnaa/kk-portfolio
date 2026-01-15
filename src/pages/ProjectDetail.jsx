@@ -98,11 +98,12 @@ const ProjectDetail = () => {
           </motion.div>
 
           {/* Main Layout: Content Left, Sidebar Right */}
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="grid lg:grid-cols-3 gap-8 mb-4"
+            className="grid lg:grid-cols-3 gap-8 mb-4 "
           >
             {/* Left Column - Main Content */}
             <div className="lg:col-span-2 space-y-8">
