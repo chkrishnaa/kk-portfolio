@@ -19,33 +19,56 @@ const LinkRenderer = ({ href, children }) => {
   }
   return <a href={href}>{children}</a>;
 };
+const renderCurlyTokens = (children, isDarkMode, variant = "inline") => {
+  if (typeof children !== "string") return children;
+
+  return children.split(/(\{[^}]+\})/g).map((part, i) => {
+    if (part.startsWith("{") && part.endsWith("}")) {
+      return (
+        <CurlyBadge
+          key={i}
+          value={part.slice(1, -1)}
+          isDarkMode={isDarkMode}
+          variant={variant}
+        />
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+};
 
 
-const CodeBlock = ({ inline, className, children, isDarkMode }) => {
+const CurlyBadge = ({ value, isDarkMode, variant = "inline" }) => {
+  const base =
+    "inline-flex items-center px-2 py-0.5 rounded-md font-medium mx-1";
+
+  const variants = {
+    h1: "text-2xl font-semibold",
+    h2: "text-xl font-semibold",
+    h3: "text-lg font-semibold",
+    inline: "text-sm",
+  };
+
+  const colors = isDarkMode
+    ? "bg-gray-800 ring-1 ring-gray-700"
+    : "bg-gray-100 ring-1 ring-gray-200";
+
+  return (
+    <span className={`${base} ${variants[variant]} ${colors}`}>{value}</span>
+  );
+};
+
+
+
+
+const CodeBlock = ({ children, className, isDarkMode }) => {
   const [copied, setCopied] = useState(false);
-
-  if (inline) {
-    return (
-      <code
-        className={`px-2 py-1 rounded text-sm ${
-          isDarkMode ? "bg-gray-800 text-blue-300" : "bg-gray-100 text-blue-600"
-        }`}
-        style={{
-          fontFamily:
-            'Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-        }}
-      >
-        {children}
-      </code>
-    );
-  }
-
-  const languageMatch = /language-(\w+)/.exec(className || "");
-  const language = languageMatch?.[1] || "text";
 
   const code = String(children)
     .replace(/\r\n/g, "\n")
     .replace(/^\s+|\s+$/g, "");
+
+  const language = /language-(\w+)/.exec(className || "")?.[1] || "text";
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
@@ -59,15 +82,12 @@ const CodeBlock = ({ inline, className, children, isDarkMode }) => {
         isDarkMode ? "border-gray-700" : "border-gray-200"
       }`}
     >
-      {/* Copy button */}
       <button
         onClick={handleCopy}
         className={`absolute top-2 right-2 z-10 flex items-center gap-2 px-2 py-2 rounded-md text-xs font-medium transition
           ${
             copied
-              ? isDarkMode
-                ? "text-green-600 bg-green-100 border border-green-500 dark:bg-green-900/30"
-                : "text-green-600 bg-green-100 border border-green-500"
+              ? "text-green-600 bg-green-100 border border-green-500 dark:bg-green-900/30"
               : isDarkMode
               ? "text-gray-300 bg-gray-800 hover:bg-gray-700"
               : "text-gray-700 bg-gray-200 hover:bg-gray-300"
@@ -75,7 +95,7 @@ const CodeBlock = ({ inline, className, children, isDarkMode }) => {
         `}
       >
         {copied && <span>Copied!</span>}
-        {copied ? <FiCheck size={16} /> : <FiCopy size={16}/>}
+        {copied ? <FiCheck size={16} /> : <FiCopy size={16} />}
       </button>
 
       <SyntaxHighlighter
@@ -86,8 +106,8 @@ const CodeBlock = ({ inline, className, children, isDarkMode }) => {
           margin: 0,
           borderRadius: "0.5rem",
           background: isDarkMode ? "#0f172a" : "#f9fafb",
-          
-          fontSize: "1.0rem",
+          fontSize: "1rem",
+          padding: "1rem",
         }}
       >
         {code}
@@ -95,6 +115,7 @@ const CodeBlock = ({ inline, className, children, isDarkMode }) => {
     </div>
   );
 };
+
 
 
 
@@ -125,40 +146,189 @@ const Overview = ({ description, isDarkMode }) => {
       <div
         className={`markdown-content text-sm text-justify leading-relaxed ${
           isDarkMode ? "text-gray-300" : "text-gray-700"
-        } [&>h1]:text-3xl [&>h1]:font-bold [&>h1]:mb-4 [&>h1]:mt-6 ${
-          isDarkMode ? "[&>h1]:text-gray-100" : "[&>h1]:text-gray-900"
-        } [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:mb-3 [&>h2]:mt-5 ${
-          isDarkMode ? "[&>h2]:text-gray-100" : "[&>h2]:text-gray-900"
-        } [&>h3]:text-xl [&>h3]:font-bold [&>h3]:mb-2 [&>h3]:mt-4 ${
-          isDarkMode ? "[&>h3]:text-gray-100" : "[&>h3]:text-gray-900"
-        } [&>p]:mb-4 [&>p]:leading-relaxed [&>ul]:list-disc [&>ul]:ml-6 [&>ul]:mb-4 [&>ol]:list-decimal [&>ol]:ml-6 [&>ol]:mb-4 [&>li]:mb-2 [&>blockquote]:border-l-4 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:mb-4 ${
-          isDarkMode
-            ? "[&>blockquote]:border-blue-400 [&>blockquote]:text-gray-300"
-            : "[&>blockquote]:border-blue-500 [&>blockquote]:text-gray-600"
-        } [&>table]:w-full [&>table]:border-collapse [&>table]:my-4 [&>table>thead>tr>th]:border [&>table>thead>tr>th]:p-2 [&>table>tbody>tr>td]:border [&>table>tbody>tr>td]:p-
-        [&>hr]:my-6
-        [&>hr]:border-0
-        [&>hr]:h-px
-        [&>hr]:bg-gray-900/40
-        dark:[&>hr]:bg-gray-400/40
-        `}
+        }
 
-        //for light mode not working hr
+/* ---------------- HEADINGS ---------------- */
+[&>h1]:text-3xl [&>h1]:font-bold [&>h1]:mb-4 [&>h1]:mt-6
+${isDarkMode ? "[&>h1]:text-gray-100" : "[&>h1]:text-gray-900"}
+
+[&>h2]:text-2xl [&>h2]:font-bold [&>h2]:mb-3 [&>h2]:mt-5
+${isDarkMode ? "[&>h2]:text-gray-100" : "[&>h2]:text-gray-900"}
+
+[&>h3]:text-xl [&>h3]:font-bold [&>h3]:mb-2 [&>h3]:mt-4
+${isDarkMode ? "[&>h3]:text-gray-100" : "[&>h3]:text-gray-900"}
+
+/* ---------------- TEXT ---------------- */
+[&>p]:mb-4 [&>p]:leading-relaxed
+[&>ul]:list-disc [&>ul]:ml-6 [&>ul]:mb-4
+[&>ol]:list-decimal [&>ol]:ml-6 [&>ol]:mb-4
+[&>li]:mb-2
+
+/* ---------------- BLOCKQUOTE ---------------- */
+[&>blockquote]:border-l-4 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:mb-4
+${
+  isDarkMode
+    ? "[&>blockquote]:border-blue-400 [&>blockquote]:text-gray-300"
+    : "[&>blockquote]:border-blue-500 [&>blockquote]:text-gray-600"
+}
+
+/* ================= INLINE CODE (SAFE) ================= */
+
+/* Paragraphs */
+[&>p>code]:px-2
+[&>p>code]:py-0.5
+[&>p>code]:rounded-md
+[&>p>code]:text-sm
+[&>p>code]:font-code
+[&>p>code]:whitespace-nowrap
+
+/* Lists */
+[&>li>code]:px-2
+[&>li>code]:py-0.5
+[&>li>code]:rounded-md
+[&>li>code]:text-sm
+[&>li>code]:font-code
+[&>li>code]:whitespace-nowrap
+
+
+${
+  isDarkMode
+    ? `
+      [&>p>code]:bg-gray-800
+      [&>p>code]:text-blue-300
+      [&>p>code]:ring-1
+      [&>p>code]:ring-gray-700
+
+      [&>li>code]:bg-gray-800
+      [&>li>code]:text-blue-300
+      [&>li>code]:ring-1
+      [&>li>code]:ring-gray-700
+    `
+    : `
+      [&>p>code]:bg-gray-100
+      [&>p>code]:text-blue-600
+      [&>p>code]:ring-1
+      [&>p>code]:ring-gray-200
+
+      [&>li>code]:bg-gray-100
+      [&>li>code]:text-blue-600
+      [&>li>code]:ring-1
+      [&>li>code]:ring-gray-200
+    `
+}
+
+
+/* ================= CODE BLOCKS ================= */
+/* DO NOT style <pre> here — handled by CodeBlock */
+
+/* ================= TABLES ================= */
+[&>table]:w-full
+[&>table]:my-6
+[&>table]:border-collapse
+[&>table]:rounded-lg
+[&>table]:overflow-hidden
+[&>table]:block
+[&>table]:overflow-x-auto
+
+[&>table>thead>tr>th]:px-4
+[&>table>thead>tr>th]:py-3
+[&>table>thead>tr>th]:text-left
+[&>table>thead>tr>th]:font-semibold
+[&>table>thead>tr>th]:border-b
+[&>table>thead>tr:first-child>th:first-child]:rounded-tl-lg
+[&>table>thead>tr:first-child>th:last-child]:rounded-tr-lg
+
+
+[&>table>tbody>tr]:border-b
+[&>table>tbody>tr>td]:px-4
+[&>table>tbody>tr>td]:py-2
+
+[&>table>tbody>tr:nth-child(even)]:bg-opacity-50
+
+
+${
+  isDarkMode
+    ? `
+      [&>table>thead]:bg-gray-800
+      [&>table>thead>tr>th]:border-gray-700
+      [&>table>tbody>tr]:border-gray-700
+      [&>table>tbody>tr:hover]:bg-gray-800/60
+      [&>table>tbody>tr:nth-child(even)]:bg-gray-800/40
+    `
+    : `
+      [&>table>thead]:bg-gray-100
+      [&>table>thead>tr>th]:border-gray-300
+      [&>table>tbody>tr]:border-gray-200
+      [&>table>tbody>tr:hover]:bg-gray-50
+      [&>table>tbody>tr:nth-child(even)]:bg-gray-100/80
+
+    `
+}
+
+/* ---------------- HR ---------------- */
+[&>hr]:my-6
+[&>hr]:border-0
+[&>hr]:h-px
+[&>hr]:bg-gray-400/40
+`}
       >
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
           components={{
             a: LinkRenderer,
-            code: (props) => <CodeBlock {...props} isDarkMode={isDarkMode} />,
-            img: ({ src, alt }) => (
-              <img
-                src={src}
-                alt={alt}
-                className="rounded-lg my-4 max-w-full"
-                onError={(e) => (e.currentTarget.style.display = "none")}
-              />
-            ),
+
+            h1({ children }) {
+              return <h1>{renderCurlyTokens(children, isDarkMode, "h1")}</h1>;
+            },
+            h2({ children }) {
+              return <h2>{renderCurlyTokens(children, isDarkMode, "h2")}</h2>;
+            },
+            h3({ children }) {
+              return <h3>{renderCurlyTokens(children, isDarkMode, "h3")}</h3>;
+            },
+
+            p({ children }) {
+              return <p>{renderCurlyTokens(children, isDarkMode)}</p>;
+            },
+
+            li({ children }) {
+              return <li>{renderCurlyTokens(children, isDarkMode)}</li>;
+            },
+
+            code({ inline, className, children }) {
+              // ❗ ABSOLUTE RULE: NO curly logic here
+              if (inline) {
+                return (
+                  <code
+                    className={`px-2 py-0.5 rounded text-sm ${
+                      isDarkMode
+                        ? "bg-gray-800 text-blue-300"
+                        : "bg-gray-100 text-blue-600"
+                    }`}
+                  >
+                    {children}
+                  </code>
+                );
+              }
+
+              return (
+                <CodeBlock className={className} isDarkMode={isDarkMode}>
+                  {children}
+                </CodeBlock>
+              );
+            },
+
+            img({ src, alt }) {
+              return (
+                <img
+                  src={src}
+                  alt={alt}
+                  className="rounded-lg my-4 max-w-full"
+                  onError={(e) => (e.currentTarget.style.display = "none")}
+                />
+              );
+            },
           }}
         >
           {description}

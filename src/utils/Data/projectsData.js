@@ -60,8 +60,7 @@ export const PROJECTS = [
     title: "Currency Converter",
     overview:
       "A sleek currency converter that lets you enter an amount, pick currencies with flag icons 🇺🇸➡️🇮🇳, use the flip button 🔁, and get instant exchange rates. Features a glass-effect UI with smooth and accurate conversions.",
-    description: 
-    `
+    description: `
 # 🌍 Currency Converter App
 
 This currency converter app provides a clean and modern interface that makes converting money between different countries simple and intuitive. At the top, users can enter the amount they want to convert, followed by two dropdown menus—one for the source currency and one for the target currency. Each dropdown is enhanced with a country flag icon 🇺🇸🇮🇳, making it easier to quickly recognize currencies at a glance. The center also includes a swap/flip button 🔁, allowing users to instantly reverse the currency direction without manually changing both fields.
@@ -102,9 +101,32 @@ Visit to this link: https://www.exchangerate-api.com
 
 ---
 
+# Getting Started with {.env} file
+
+1. Create a file named ".env" in the root directory of your project.
+2. Inside the ".env" file, add the following lines:
+\`\`\`
+VITE_EXCHANGE_RATE_API_KEY=your_exchange_rate_api_key
+\`\`\`
+3. Replace "your_exchange_rate_api_key" with your actual Exchange Rate API key.
+
+---
+
 \`\`\`js
 console.log("Hello, World!");
 \`\`\`
+
+---
+
+## Table:
+| Name        | Role              | Experience (Years) | Tech Stack            |
+|-------------|-------------------|--------------------|-----------------------|
+| Krishna     | Frontend Dev      | 2                  | React, Tailwind       |
+| Ananya      | Backend Dev       | 3                  | Node.js, MongoDB      |
+| Rahul       | Full Stack Dev    | 4                  | MERN                  |
+| Sneha       | UI/UX Designer    | 2                  | Figma, Adobe XD       |
+| Amit        | DevOps Engineer   | 5                  | Docker, AWS           |
+
 `,
     image: "",
     technologies: ["React", "JaveScript", "CSS", "API Integration"],
