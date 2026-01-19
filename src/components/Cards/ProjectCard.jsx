@@ -22,8 +22,7 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
     <motion.div
       variants={cardVariants}
       whileHover={{
-        y: -8,
-        scale: 1.02,
+       
         transition: {
           duration: 0.3,
           ease: "easeOut",
@@ -45,6 +44,7 @@ const ProjectCard = ({ project, index, isDarkMode }) => {
           Tags={PreviewTag}
           Github={Github}
           Open={Open}
+          // style={{border: "none"}}
         />
 
         <div className="p-6">

@@ -6,7 +6,7 @@ const ImagePreview = ({ project, isDarkMode }) => {
       <div className="w-full min-w-0">
         <h1 className="text-2xl font-semibold mb-2">Live Demo:</h1>
 
-        <div className="w-full min-w-0 overflow-hidden">
+        <div className="w-full rounded-xl min-w-0 overflow-hidden">
           <PreviewBox
             project={project}
             isDarkMode={isDarkMode}
@@ -19,7 +19,7 @@ const ImagePreview = ({ project, isDarkMode }) => {
       <div className="w-full min-w-0">
         <h1 className="text-2xl font-semibold mb-2">Github:</h1>
 
-        <div className="w-full min-w-0 overflow-hidden">
+        <div className="w-full rounded-xl min-w-0 overflow-hidden">
           <PreviewBox
             project={project}
             isDarkMode={isDarkMode}

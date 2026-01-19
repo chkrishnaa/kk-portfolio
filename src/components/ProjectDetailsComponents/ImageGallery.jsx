@@ -56,6 +56,7 @@ const ImageGallery = ({ galleryImages, title, isDarkMode }) => {
       <motion.div
         key={`img-${actualIndex}-${isOverlay}`}
         className={`relative overflow-hidden cursor-pointer ${customClass}`}
+        style={{ margin: 0, padding: 0 }}
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.2 }}
         onClick={() => {
@@ -66,7 +67,14 @@ const ImageGallery = ({ galleryImages, title, isDarkMode }) => {
           src={img}
           alt={`${title} - Image ${actualIndex + 1}`}
           className={`w-full h-full object-cover`}
-          style={{ maxWidth: '100%', height: 'auto' }}
+          style={{ 
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            margin: 0,
+            padding: 0
+          }}
           onError={(e) => {
             console.error(`Failed to load image at index ${actualIndex}:`, img);
             e.target.style.display = "none";
@@ -94,10 +102,12 @@ const ImageGallery = ({ galleryImages, title, isDarkMode }) => {
         {/* Special layout for 5 images */}
         {imageCount === 5 ? (
           <div
-            className={`grid grid-cols-6 gap-1 rounded-xl overflow-hidden aspect-square ${
+            className={`grid grid-cols-6 gap-0.5 rounded-xl overflow-hidden aspect-square ${
               isDarkMode ? "bg-gray-800" : "bg-gray-100"
             }`}
-            style={{ gridTemplateRows: "repeat(2, 1fr)" }}
+            style={{ 
+              gridTemplateRows: "repeat(2, 1fr)"
+            }}
           >
             {/* First row: 3 images, each spanning 2 columns (33.33% width) */}
             {displayImages.slice(0, 3).map((img, index) =>
@@ -115,7 +125,7 @@ const ImageGallery = ({ galleryImages, title, isDarkMode }) => {
           </div>
         ) : (
           <div
-            className={`grid ${grid} gap-1 rounded-xl overflow-hidden aspect-square ${
+            className={`grid ${grid} gap-0.5 rounded-xl overflow-hidden aspect-square ${
               isDarkMode ? "bg-gray-800" : "bg-gray-100"
             }`}
             style={{

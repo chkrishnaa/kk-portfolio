@@ -119,7 +119,7 @@ const CodeBlock = ({ children, className, isDarkMode }) => {
 
 
 
-const Overview = ({ description, isDarkMode }) => {
+const Description = ({ description, isDarkMode }) => {
   if (!description) return null;
 
   // Check if description is markdown
@@ -339,5 +339,5 @@ ${
   );
 };
 
-export default Overview;
+export default Description;
 

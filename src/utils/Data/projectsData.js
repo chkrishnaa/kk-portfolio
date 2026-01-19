@@ -52,7 +52,7 @@ export const PROJECTS = [
     status: "Live Project",
     technologies: ["React", "Node", "Express", "MongoDB", "WebSockets"],
     videoUrl: "",
-    galleryImages: [],
+    galleryImages: [PROJECT_IMG_1],
   },
 
   {
@@ -103,7 +103,7 @@ Visit to this link: https://www.exchangerate-api.com
 
 # Getting Started with {.env} file
 
-1. Create a file named ".env" in the root directory of your project.
+1. Create a file named {.env} in the root directory of your project.
 2. Inside the ".env" file, add the following lines:
 \`\`\`
 VITE_EXCHANGE_RATE_API_KEY=your_exchange_rate_api_key
@@ -136,7 +136,6 @@ console.log("Hello, World!");
 
 `,
     image: "",
-    technologies: ["React", "JaveScript", "CSS", "API Integration"],
     tags: [
       "currency",
       "rate-conversion",
@@ -154,7 +153,7 @@ console.log("Hello, World!");
     role: "Frontend Developer",
     duration: "Feb 2024 - Mar 2024",
     status: "Live Project",
-    technologies: ["React", "JaveScript", "CSS", "API Integration"],
+    technologies: ["React", "JaveScript", "CSS"],
     videoUrl: "https://www.youtube.com/embed/eC2Rq-AYMqo?si=8O2730P5yX_ikuec",
     galleryImages: [PROJECT_IMG_1],
     externalLinks: [
