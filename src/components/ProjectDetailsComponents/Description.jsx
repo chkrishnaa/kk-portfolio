@@ -324,7 +324,8 @@ ${
                 <img
                   src={src}
                   alt={alt}
-                  className="rounded-lg my-4 max-w-full"
+                  className="rounded-lg my-4 w-full max-w-full"
+                  style={{ maxWidth: '100%', height: 'auto' }}
                   onError={(e) => (e.currentTarget.style.display = "none")}
                 />
               );

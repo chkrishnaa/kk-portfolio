@@ -66,6 +66,7 @@ const ImageGallery = ({ galleryImages, title, isDarkMode }) => {
           src={img}
           alt={`${title} - Image ${actualIndex + 1}`}
           className={`w-full h-full object-cover`}
+          style={{ maxWidth: '100%', height: 'auto' }}
           onError={(e) => {
             console.error(`Failed to load image at index ${actualIndex}:`, img);
             e.target.style.display = "none";

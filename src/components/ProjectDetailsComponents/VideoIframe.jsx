@@ -133,6 +133,7 @@ const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
               src={thumbnail}
               alt={title || "Video thumbnail"}
               className="w-full h-full object-cover"
+              style={{ maxWidth: '100%', height: 'auto' }}
               onError={(e) => {
                 // Fallback to default YouTube thumbnail
                 if (videoId) {

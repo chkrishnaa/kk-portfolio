@@ -121,12 +121,14 @@ const PreviewBox = ({
       className={`relative overflow-hidden rounded-xl border w-full max-w-full ${
         isDarkMode ? "border-gray-800" : "border-gray-300"
       }`}
+      style={{ maxWidth: '100%', overflow: 'hidden' }}
     >
       <img
         src={hasError ? project.image : imageSrc}
         alt={project.title}
         onError={() => setHasError(true)}
-        className="w-full aspect-video object-fill transition-transform duration-700 group-hover:scale-105"
+        className="w-full h-full aspect-video object-cover transition-transform duration-700 group-hover:scale-105"
+        style={{ maxWidth: '100%', height: 'auto' }}
       />
 
       {PreviewTag && <PreviewTag project={project} isDarkMode={isDarkMode} />}

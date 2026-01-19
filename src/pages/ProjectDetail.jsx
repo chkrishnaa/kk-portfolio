@@ -160,12 +160,12 @@ const ProjectDetail = () => {
             </div>
 
             {/* Right Column - Sidebar */}
-            <div className="lg:col-span-1">
+            <div className="lg:col-span-1 w-full min-w-0">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.4 }}
-                className="lg:sticky lg:top-24 space-y-8"
+                className="lg:sticky lg:top-24 space-y-8 w-full min-w-0"
               >
                 <ImagePreview project={project} isDarkMode={isDarkMode} />
                 <Sidebar project={project} isDarkMode={isDarkMode} />
