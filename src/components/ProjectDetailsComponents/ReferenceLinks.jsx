@@ -135,24 +135,34 @@ const ReferenceLinks = ({ project, isDarkMode }) => {
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (hoveredIndex !== null) {
-        const previewWidth = 400;
-        const previewHeight = 300;
         const padding = 20;
+        const maxPreviewWidth = 400;
+        const maxPreviewHeight = 300;
+
+        const previewWidth = Math.min(
+          maxPreviewWidth,
+          window.innerWidth - padding * 2
+        );
+        const previewHeight = Math.min(
+          maxPreviewHeight,
+          window.innerHeight - padding * 2
+        );
 
         let x = e.clientX + 15; // Offset from cursor
         let y = e.clientY + 15;
 
-        // Ensure preview stays within viewport
+        // Ensure preview stays within viewport horizontally
         if (x + previewWidth + padding > window.innerWidth) {
           x = e.clientX - previewWidth - 15; // Show on left side of cursor
         }
+        // Ensure preview stays within viewport vertically
         if (y + previewHeight + padding > window.innerHeight) {
           y = e.clientY - previewHeight - 15; // Show above cursor
         }
         if (x < padding) x = padding;
         if (y < padding) y = padding;
 
-        setPreviewPosition({ x, y });
+        setPreviewPosition({ x, y, width: previewWidth, height: previewHeight });
       }
     };
 
@@ -488,10 +498,11 @@ const ReferenceLinks = ({ project, isDarkMode }) => {
             style={{
               left: `${previewPosition.x}px`,
               top: `${previewPosition.y}px`,
+              width: previewPosition.width || 400,
             }}
           >
             <div
-              className={`w-[400px] aspect-video overflow-hidden rounded-xl border ${
+              className={`w-full aspect-video overflow-hidden rounded-xl border ${
                 isDarkMode
                   ? "border-gray-800 bg-gray-900"
                   : "border-gray-200 bg-white"

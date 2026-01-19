@@ -7,7 +7,7 @@ const Sidebar = ({ project, isDarkMode }) => {
       initial={{ opacity: 0, x: 20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className={`rounded-2xl border p-6 top-24 ${
+      className={`rounded-2xl border p-6 top-24 w-full max-w-full min-w-0 ${
         isDarkMode
           ? "bg-gray-900/50 border-gray-800"
           : "bg-white/50 border-gray-200"

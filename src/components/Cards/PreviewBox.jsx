@@ -118,7 +118,7 @@ const PreviewBox = ({
 
   return (
     <div
-      className={`relative overflow-hidden rounded-xl border ${
+      className={`relative overflow-hidden rounded-xl border w-full max-w-full ${
         isDarkMode ? "border-gray-800" : "border-gray-300"
       }`}
     >

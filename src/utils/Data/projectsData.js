@@ -127,6 +127,13 @@ console.log("Hello, World!");
 | Sneha       | UI/UX Designer    | 2                  | Figma, Adobe XD       |
 | Amit        | DevOps Engineer   | 5                  | Docker, AWS           |
 
+---
+
+## 🖼️ Sample Image
+
+![Sample Image](https://m.media-amazon.com/images/I/91Jal3ye12L._AC_UF1000,1000_QL80_.jpg)
+
+
 `,
     image: "",
     technologies: ["React", "JaveScript", "CSS", "API Integration"],

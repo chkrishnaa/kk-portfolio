@@ -86,7 +86,7 @@ const ImageGallery = ({ galleryImages, title, isDarkMode }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="space-y-4"
+        className="space-y-4 w-full overflow-hidden"
       >
         <h3 className="text-2xl font-bold mb-4">Project Gallery</h3>
         

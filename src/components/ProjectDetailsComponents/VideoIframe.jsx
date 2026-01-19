@@ -117,7 +117,7 @@ const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.1 }}
-      className={`rounded-xl border overflow-hidden relative group cursor-pointer ${
+      className={`rounded-2xl border overflow-hidden relative group cursor-pointer w-full ${
         isDarkMode
           ? "bg-gray-900/50 border-gray-800"
           : "bg-white/50 border-gray-200"
@@ -153,7 +153,7 @@ const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
         )}
 
         {showIframe && (
-          <div className="absolute inset-0 w-full h-full z-20">
+          <div className="absolute inset-0 w-full h-full z-20 overflow-hidden">
             <iframe
               key={`${iframeKey}-${isPlaying ? 'play' : 'hover'}`}
               ref={iframeRef}
@@ -161,7 +161,8 @@ const VideoIframe = ({ videoUrl, thumbnailUrl, title, isDarkMode }) => {
               className="w-full h-full"
               style={{ 
                 pointerEvents: isPlaying ? "auto" : "none",
-                border: 'none'
+                border: 'none',
+                maxWidth: '100%'
               }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen

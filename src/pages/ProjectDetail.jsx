@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { PROJECTS } from "../utils/Data/projectsData";
@@ -20,6 +21,15 @@ const ProjectDetail = () => {
   const { isDarkMode } = useTheme();
 
   const project = PROJECTS.find((p) => p.id === parseInt(projectId));
+
+  // Ensure we always start at the top when navigating between projects
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [projectId]);
 
   if (!project) {
     return (
@@ -48,23 +58,23 @@ const ProjectDetail = () => {
       }`}
     >
       <div
-        className={`fixed top-10 right-1/8 w-80 h-80 rounded-full blur-3xl opacity-50 ${
+        className={`fixed top-10 right-[12.5%] w-80 h-80 rounded-full blur-3xl opacity-50 pointer-events-none ${
           isDarkMode ? "bg-blue-500" : "bg-blue-400"
         }`}
       ></div>
       <div
-        className={`fixed bottom-10 left-1/8 w-96 h-96 rounded-full blur-3xl opacity-50 ${
+        className={`fixed bottom-10 left-[12.5%] w-96 h-96 rounded-full blur-3xl opacity-50 pointer-events-none ${
           isDarkMode ? "bg-blue-500" : "bg-blue-400"
         }`}
       ></div>
 
       <div
-        className={`fixed top-5 left-0 w-64 h-64 rounded-full blur-3xl opacity-50 ${
+        className={`fixed top-5 -left-32 w-64 h-64 rounded-full blur-3xl opacity-50 pointer-events-none ${
           isDarkMode ? "bg-purple-500" : "bg-purple-400"
         }`}
       ></div>
       <div
-        className={`fixed bottom-5 right-0 w-72 h-72 rounded-full blur-3xl opacity-50 ${
+        className={`fixed bottom-5 -right-32 w-72 h-72 rounded-full blur-3xl opacity-50 pointer-events-none ${
           isDarkMode ? "bg-purple-500" : "bg-purple-400"
         }`}
       ></div>
@@ -103,10 +113,10 @@ const ProjectDetail = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="grid lg:grid-cols-3 gap-8 mb-4 "
+            className="grid lg:grid-cols-3 gap-4 lg:gap-8 mb-4"
           >
             {/* Left Column - Main Content */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 space-y-8 w-full min-w-0">
               {/* Video Iframe Section - Full Width */}
               {project.videoUrl && (
                 <motion.div
